@@ -61,16 +61,20 @@ public class Pruvitanna extends JFrame {
 		b_Teacher = new JButton("Увійти як учитель / викладач");
 		b_Teacher.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				new AvtorTeacher("TestMaster");
+				setVisible(false);	
 			}
 		});
 		b_Teacher.setForeground(new Color(0, 0, 0));
 		b_Teacher.setFont(new Font("Palatino Linotype", Font.PLAIN, 25));
 		b_Teacher.setBounds(48, 417, 900, 45);
 		getContentPane().add(b_Teacher);
-
+		
 		b_Student = new JButton("Увійти як учень / студент");
 		b_Student.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				new AvtorStudent("TestMaster");
+				setVisible(false);	
 			}
 		});
 		b_Student.setForeground(new Color(0, 0, 0));
@@ -85,7 +89,7 @@ public class Pruvitanna extends JFrame {
 		getContentPane().add(l_Nazva);
 
 		l_fon = new JLabel("");
-		l_fon.setIcon(new ImageIcon("C:\\Users\\ZakkZakk\\Desktop\\Sky-background-TEST.jpg"));
+		l_fon.setIcon(new ImageIcon("res/fon/Pruvitanna.jpg"));
 		l_fon.setBounds(0, 0, 994, 565);
 		getContentPane().add(l_fon);
 
