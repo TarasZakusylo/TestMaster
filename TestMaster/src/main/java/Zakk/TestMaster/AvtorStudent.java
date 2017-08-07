@@ -59,11 +59,13 @@ public class AvtorStudent extends JFrame{
 		getContentPane().add(l_Hapka);
 		
 		tF_Mail = new JTextField();
+		tF_Mail.setFont(new Font("Palatino Linotype", Font.PLAIN, 23));
 		tF_Mail.setBounds(261, 245, 239, 31);
 		getContentPane().add(tF_Mail);
 		tF_Mail.setColumns(10);
 		
 		pF_Password = new JPasswordField();
+		pF_Password.setFont(new Font("Palatino Linotype", Font.PLAIN, 23));
 		pF_Password.setBounds(261, 289, 239, 31);
 		getContentPane().add(pF_Password);
 		
@@ -83,13 +85,15 @@ public class AvtorStudent extends JFrame{
 		
 		b_Vhid = new JButton("Вхід");
 		b_Vhid.addActionListener(new ActionListener() {
-			private String s_Login;
+			
+			private String s_Mail;
 			private String s_Password;
 
 			private Scanner scanner_Avtoruzacia;
 			private String s_Avtoruzacia;
 
-			String[][] Reading = new String[1][4];
+			String[][] Reading = new String[1][5];
+			
 			private String Reading_Password;
 			private String Reading_Name;
 			private String Reading_Prizvusko;
@@ -98,11 +102,12 @@ public class AvtorStudent extends JFrame{
 			@SuppressWarnings("deprecation")
 
 			public void actionPerformed(ActionEvent arg0) {
-				s_Login = l_Mail.getText();
+				
+				s_Mail = tF_Mail.getText();
 				s_Password = pF_Password.getText();
 
 				try {
-					scanner_Avtoruzacia = new Scanner(new File("res/Avtoruzacia/" + s_Login + ".txt"));
+					scanner_Avtoruzacia = new Scanner(new File("res/AvtoruzaciaStudent/" + s_Mail + ".txt"));
 
 					while (scanner_Avtoruzacia.hasNext()) {
 						for (int row = 0; row < Reading.length; row++) {
@@ -126,6 +131,7 @@ public class AvtorStudent extends JFrame{
 					}
 					s_Avtoruzacia = Reading_Password;
 					scanner_Avtoruzacia.close();
+					s_Password = pF_Password.getText();
 
 					if (s_Password.equals(s_Avtoruzacia)) {
 						JOptionPane.showMessageDialog(null, "Вітаю, Ви в системі");
@@ -140,7 +146,7 @@ public class AvtorStudent extends JFrame{
 						formatter_RobocuyProfil.format(s_Korustuvac);
 						formatter_RobocuyProfil.close();
 
-						new MenuStudent("Дієтолог");
+						new MenuStudent("TestMaster");
 						setVisible(false);
 					} else {
 						JOptionPane.showMessageDialog(null, "Помилка введення");
@@ -159,7 +165,7 @@ public class AvtorStudent extends JFrame{
 		l_Reestrasia.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new ReectraciaStudent();
+				new ReectraciaStudent("TestMaster");
 				setVisible(false);	
 			}
 		});
